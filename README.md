@@ -25,4 +25,7 @@ For BIP32:
 First we use our functions to find the entropy of 128 bits of the seed (without the checksum). Then we convert these bits into bytes. We put these bytes in the HMAC-SHA512 and we get an output in hexadecimal with a length of 128. 
 
     hashlib.sha512()
-We convert this output from hex to binary to get our 512 bits. We keep the first 256 bits to generate our Master Private Key and the last 256 to get our Master Chain Code.
+We convert this output from hex to binary to get our 512 bits. 
+
+    binary_hash = bin(int(hex_hash, 16))[2:].zfill(8) # converts the hash from hex to binary
+We keep the first 256 bits to generate our Master Private Key and the last 256 to get our Master Chain Code.
